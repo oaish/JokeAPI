@@ -1,6 +1,6 @@
 const express = require("express")
 const https = require("https")
-const {response} = require("express");
+const { response } = require("express");
 const app = express()
 let joke = {
     categories: ["Any"],
@@ -9,8 +9,8 @@ let joke = {
         "format=txt"
     ],
     options: {
-        category: [ true, true, true, true ],
-        blacklist: [ true, true, true, true ]
+        category: [true, true, true, true],
+        blacklist: [true, true, true, true]
     }
 }
 
@@ -18,7 +18,7 @@ app.set("view engine", "ejs")
 app.set("views", __dirname + "/views")
 
 app.use(express.static("public"))
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
             } else if (userAgent.includes('iPhone') || userAgent.includes('Android') || userAgent.includes('iPad')) {
                 view = "mobile"
             }
-            res.render(view, {jokeText: joke, options: joke.options})
+            res.render(view, { jokeText: joke, options: joke.options })
         })
     }).on('error', () => {
         res.status(404).send('Joke Not Found')
@@ -53,6 +53,6 @@ app.get('/api', (req, res) => {
 })
 
 
-app.listen(5000, () => {
-    console.log("Server is running at http://localhost:5000")
+app.listen(process.env.PORT || 5000, () => {
+    console.log("Server is running at http://localhost:5000 or " + process.env.PORT)
 })
