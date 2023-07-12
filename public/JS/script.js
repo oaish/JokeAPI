@@ -107,7 +107,7 @@ function getOptions() {
             code, misc, dark, spooky
         ],
         blacklist: [
-           checkbox[0].checked,
+            checkbox[0].checked,
             checkbox[1].checked,
             checkbox[2].checked,
             checkbox[3].checked
@@ -131,7 +131,7 @@ btn.on("click", async (event) => {
         ],
         options: opt
     };
-    const res = await fetch('http://localhost:5000/joke', {
+    const res = await fetch('/joke', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
