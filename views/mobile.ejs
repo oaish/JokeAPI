@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jokes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/checkbox.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous" defer></script>
+    <script src="JS/script.js" defer></script>
+</head>
+<body>
+<section class="joke-sect box-flex">
+    <div class="box-container box-flex">
+        <div class="jokes">
+            <h1 class="joke">
+                <%= jokeText %>
+            </h1>
+        </div>
+    </div>
+</section>
+
+<section class="input-sect box-flex">
+    <form action="/joke" method="post">
+        <div class="box-container box-flex">
+            <div class="boxy">
+                <div class="box-flex box-btn">
+                    <div class="btn-bg">
+                        <button type="submit">
+                            Next Joke <span>»</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-container box-flex">
+
+            <div class="boxy">
+                <h2 class="h2-title">Category ⮟</h2>
+                <div class="groupbox form-category">
+                    <div class="box-container flex">
+                        <div class="box flex ">
+                            <div class="card clicked grid">
+                                <img src="images/code.svg" class="svg" alt="">
+                                <h4 class="hh">Code</h4>
+                            </div>
+                            <div class="card clicked flex">
+                                <img src="images/misc.svg" class="svg" alt="">
+                                <h4 class="hh">Misc</h4>
+                            </div>
+                            <div class="card clicked flex">
+                                <img src="images/cute_skull.svg" class="svg" alt="">
+                                <h4 class="hh">Dark</h4>
+                            </div>
+                            <div class="card clicked flex">
+                                <img src="images/jack_o'_lantern.svg" class="svg" alt="">
+                                <h4 class="hh">Spooky</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="h2-title">Blacklist ⮟</h2>
+
+                <div class="cb-container">
+
+                    <label class="lbl-container">NSFW
+                        <input type="checkbox" checked="checked" name="nsfw" value="nsfw">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="lbl-container">Religious
+                        <input type="checkbox" checked="checked" name="religious" value="religious">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="lbl-container">Racist
+                        <input type="checkbox" checked="checked" name="racist" value="racist">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="lbl-container">Sexist
+                        <input type="checkbox" checked="checked" name="sexist" value="sexist">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<span id="options" style="visibility: hidden"> <%= options %></span>
+
+<script defer>
+    const textDoc = document.querySelector(".joke").textContent; // Replace with your desired text
+    const delay = 10; // Delay between each character (in milliseconds)
+    document.querySelector(".joke").textContent = ""
+    let index = 0;
+
+    async function getIt() {
+        let opt = {}
+        const rnd = await fetch('http://localhost:5000/api', {
+            method: 'GET',
+        }).then(res => res.json())
+            .then(data => opt = data)
+        function setOptions(opt) {
+            const cardSet = document.querySelectorAll(".card")
+            const category = opt.category;
+            const blacklist = opt.blacklist;
+
+            for (let i = 0; i < 4; i++) {
+                category[i] ? cardSet[i].classList.add("clicked") : cardSet[i].classList.remove("clicked")
+                blacklist[i] ? checkbox[i].setAttribute("checked", "true") : checkbox[i].setAttribute("checked", "true")
+            }
+        }
+
+        setOptions(opt)
+    }
+    getIt()
+
+
+    function typeText() {
+        if (textDoc.length > 150) {
+            document.querySelector(".joke").style.fontSize = "1em"
+        } else {
+            document.querySelector(".joke").style.fontSize = "1.5em"
+        }
+        if (index < textDoc.length) {
+            const typedTextElement = document.querySelector(".joke");
+            typedTextElement.textContent += textDoc.charAt(index) === '.' ? '.\n' : textDoc.charAt(index);
+            index++;
+            setTimeout(typeText, delay);
+        }
+    }
+
+    typeText();
+</script>
+
+</body>
+</html>

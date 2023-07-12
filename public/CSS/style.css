@@ -1,0 +1,232 @@
+body {
+    background: #1c1c1c !important;
+    font-family: "Agency FB", cursive;
+}
+
+.box-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joke-sect {
+    height: auto;
+    margin-block: 30px;
+}
+
+.box-container {
+    background: linear-gradient(180deg, #fc00ff, #00dbde);
+    width: 80%;
+    height: 80%;
+    border-radius: 20px;
+    box-shadow: -10px -10px 1rem black;
+}
+
+.joke-sect .box-container {
+}
+
+form {
+    width: 80%;
+    border-radius: 20px;
+}
+
+.jokes {
+    background: black;
+    width: 99%;
+    height: 99%;
+    border-radius: 20px;
+}
+
+.input-sect .box-container {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.boxy {
+    width: 99%;
+    border-radius: 10px;
+    background: black;
+}
+
+.btn-bg {
+    background: linear-gradient(90deg, #fc00ff, #00dbde);
+    width: fit-content;
+    border-radius: 5px;
+    margin: 1rem 2rem 1rem 2rem;
+}
+
+button {
+    background: black;
+    width: fit-content;
+    border-radius: 5px;
+    color: white;
+    margin: 2px;
+    font-size: 1rem;
+}
+
+.sub-h {
+    color: #FFFA;
+    padding: 10px 10px 20px 20px;
+    font-size: 1.2rem;
+    flex: 3;
+    margin: 0;
+}
+
+h1 {
+    color: white;
+    margin: 1.5rem;
+    font-size: 1.5rem;
+    display: inline-block;
+}
+
+.groupbox {
+    color: white;
+    font-family: sans-serif;
+    margin: 1em 0 1em 0;
+    border-radius: 10px;
+}
+
+.h2-title {
+    margin-left: 0.7em;
+    font-family: "Agency FB", sans-serif;
+    color: white;
+    margin-bottom: 0.7em;
+}
+
+input {
+    accent-color: crimson;
+}
+
+.form-category .box-container {
+    width: 16.4em;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    box-shadow: none;
+}
+
+.box {
+    width: 16em;
+    height: 5em;
+    display: flex;
+    gap: 0.4em;
+    padding-block: 0.5em;
+    justify-content: center;
+    background: lightgray;
+    border-radius: 0.5em;
+}
+
+.card {
+    color: black;
+    width: 3.5em;
+    height: 3.5em;
+    display: grid;
+    place-items: center;
+    background: #cdd1d5;
+    border-radius: 0.5em;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3.5em 1em;
+    transition: all 300ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
+    box-shadow: 0 10px 20px -2px rgba(0, 0, 0, 0.4), inset 0 -4px 25px 1px rgba(255, 255, 255, 0.9), 0 -5px 10px -1px rgba(255, 255, 255, 0.6), inset 0 8px 25px 0 rgba(0, 0, 0, 0.4), inset 0 0 10px 1px rgba(255, 255, 255, 0.6);
+}
+
+.hh {
+    font-family: "Agency FB", sans-serif;
+    font-size: 1em;
+
+    margin-top: 30px;
+    padding: 0;
+}
+
+.svg {
+    width: 2.7em;
+    filter: invert(100%) sepia(95%) saturate(0%) hue-rotate(127deg) brightness(104%) contrast(105%);
+}
+
+.clicked {
+    box-shadow: 0 10px 20px -2px rgba(0, 0, 0, 0.5), inset 0 -3px 4px -1px rgba(0, 0, 0, 0.2), 0 -5px 10px -1px rgba(255, 255, 255, 0.6), inset 0 3px 4px -1px rgba(255, 255, 255, 0.2), inset 0 0 5px 1px rgba(255, 255, 255, 0.8), inset 0 15px 25px 0 rgba(255, 255, 255, 0.2);
+    color: crimson;
+}
+
+.clicked img {
+    filter: invert(90%) sepia(88%) saturate(6077%) hue-rotate(343deg) brightness(110%) contrast(89%);
+}
+
+@media (max-width: 800px) {
+    .form-category {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-width: 801px) {
+    body {
+        width: 99vw;
+        height: 90vh;
+        margin-top: 4rem;
+        display: grid;
+        grid-template-columns: 60% 30%;
+        place-items: center;
+        box-sizing: border-box;
+    }
+    .joke-sect {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+    .joke-sect .box-container {
+        width: 90%;
+        height: 90%;
+    }
+    .jokes {
+        padding-block: 0.3rem;
+    }
+    .padd {
+        padding: 3rem;
+    }
+    h1 {
+        font-size: 3rem
+    }
+    button {
+        background: black;
+        width: fit-content;
+        height: 3.5rem;
+        border-radius: 5px;
+        color: white;
+        margin: 2px;
+        font-size: 2rem;
+        font-family: "Agency FB", sans-serif;
+    }
+    .input-sect {
+        width: 100%;
+    }
+    .form-category {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .form-category .box-container {
+        width: 20.6em;
+    }
+    .box {
+        width: 20em;
+        height: 6.4em;
+    }
+    .card {
+        display: flex;
+        flex-direction: column;
+        width: 4.3em;
+        height: 4.3em;
+    }
+    .svg {
+        width: 3.7em;
+        margin-top: 5px;
+    }
+    .hh {
+        margin-top: 13px;
+        font-size: 1.5em;
+    }
+}
