@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="CSS/checkbox.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
+    <script src="JS/preload.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
             integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous" defer></script>
     <script src="JS/script.js" defer></script>
@@ -98,51 +99,6 @@
     </form>
 </section>
 <span id="options" style="visibility: hidden"> <%= options %></span>
-
-<script defer>
-    const textDoc = document.querySelector(".joke").textContent; // Replace with your desired text
-    const delay = 10; // Delay between each character (in milliseconds)
-    document.querySelector(".joke").textContent = ""
-    let index = 0;
-
-    async function getIt() {
-        let opt = {}
-        const rnd = await fetch('http://localhost:5000/api', {
-            method: 'GET',
-        }).then(res => res.json())
-            .then(data => opt = data)
-        function setOptions(opt) {
-            const cardSet = document.querySelectorAll(".card")
-            const category = opt.category;
-            const blacklist = opt.blacklist;
-
-            for (let i = 0; i < 4; i++) {
-                category[i] ? cardSet[i].classList.add("clicked") : cardSet[i].classList.remove("clicked")
-                blacklist[i] ? checkbox[i].setAttribute("checked", "true") : checkbox[i].setAttribute("checked", "true")
-            }
-        }
-
-        setOptions(opt)
-    }
-    getIt()
-
-
-    function typeText() {
-        if (textDoc.length > 150) {
-            document.querySelector(".joke").style.fontSize = "3em"
-        } else {
-            document.querySelector(".joke").style.fontSize = "3.5em"
-        }
-        if (index < textDoc.length) {
-            const typedTextElement = document.querySelector(".joke");
-            typedTextElement.textContent += textDoc.charAt(index) === '.' ? '.\n' : textDoc.charAt(index);
-            index++;
-            setTimeout(typeText, delay);
-        }
-    }
-
-    typeText();
-</script>
 
 </body>
 </html>
