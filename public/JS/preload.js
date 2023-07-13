@@ -1,6 +1,7 @@
 const textDoc = document.querySelector(".joke").textContent; // Replace with your desired text
 const delay = 10; // Delay between each character (in milliseconds)
 document.querySelector(".joke").textContent = ""
+document.querySelector(".joke").style.visibility = "unset"
 let index = 0;
 
 async function getIt() {
@@ -17,7 +18,7 @@ async function getIt() {
 
         for (let i = 0; i < 4; i++) {
             category[i] ? cardSet[i].classList.add("clicked") : cardSet[i].classList.remove("clicked")
-            blacklist[i] ? checkbox[i].setAttribute("checked", "true") : checkbox[i].setAttribute("checked", "true")
+            blacklist[i] ? checkbox[i].setAttribute("checked", "true") : checkbox[i].setAttribute("checked", "false")
         }
     }
 

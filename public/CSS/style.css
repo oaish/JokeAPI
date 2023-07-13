@@ -183,6 +183,9 @@ input {
     .jokes {
         padding-block: 0.3rem;
     }
+    .joke {
+        margin-bottom: 0.3rem;
+    }
     .padd {
         padding: 3rem;
     }
